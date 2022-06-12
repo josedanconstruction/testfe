@@ -5,23 +5,97 @@ import Home from "./Home";
 import SnackOrBoozeApi from "./Api";
 import NavBar from "./NavBar";
 import { Route, Switch } from "react-router-dom";
-import Menu from "./FoodMenu";
-import Snack from "./FoodItem";
-import NewItemForm from "./NewItemForm";
+import Menu from "./MenuHook";
+import Item from "./ItemHook";
+import Comp from "./CompanyHook";
+import AddItemForm from "./AddItemForm";
+import { v4 as uuid } from "uuid";
+import My404 from "./my404";
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
-  const [snacks, setSnacks] = useState([]);
-  const [drinks, setDrinks] = useState([]);
+ // const [snacks, setSnacks] = useState([]);
+ // const [drinks, setDrinks] = useState([]);
+  const [permits, setPermits] = useState([]);
+  const [contractors, setContractors] = useState([]);
 
+  /** we use the getSnacks /getDrinks functions to draw from api in api.js */
   useEffect(() => {
-    async function getSnacks() {
-      let snacks = await SnackOrBoozeApi.getSnacks();
-      setSnacks(snacks);
+    async function getContractors() {
+      let contractors = await SnackOrBoozeApi.getContractors();
+      setContractors(contractors);
       setIsLoading(false);
     }
-    getSnacks();
+    getContractors();
   }, []);
+
+  useEffect(() => {
+    async function getPermits() {
+      let permits = await SnackOrBoozeApi.getPermits();
+      setPermits(permits);
+      setIsLoading(false);
+    }
+    getPermits();
+  }, []);
+
+  /** It is the function pass down to thr form, give it unique id from uuid() */
+  const add = (formData, type) => {
+    if (type === "snacks") {
+    //  setSnacks((snacks) => [...snacks, { ...formData, id: uuid() }]);
+    } else {
+    //  setDrinks((drinks) => [...drinks, { ...formData, id: uuid() }]);
+    }
+  };
+
+  /** if the data not receiving it will loading */
+  if (isLoading) {
+    return <p>Loading &hellip;</p>;
+  }
+
+  return (
+    <div className="App">
+      <BrowserRouter>
+        <NavBar />
+        <main>
+          <Switch>
+            <Route exact path="/">
+              <Home items={permits} />
+            </Route>
+
+            <Route exact path="/:type/new">
+              <AddItemForm add={add} />
+            </Route>
+
+            <Route exact path="/permits">
+              <Menu items={permits} title="Permits" />
+            </Route>
+
+            <Route exact path="/permits/:id">
+              <Item items={permits} cantFind="/permits" />
+            </Route>
+
+            <Route exact path="/contractors">
+              <Comp items={contractors} title="Contractors" />
+            </Route>
+
+            <Route exact path="/contractors/:id">
+              <Item items={contractors} cantFind="/contractors" />
+            </Route>
+
+            <Route>
+              <My404 />
+            </Route>
+          </Switch>
+        </main>
+      </BrowserRouter>
+    </div>
+  );
+}
+
+export default App;
+
+
+/*
 
   useEffect(() => {
     async function getDrinks() {
@@ -32,55 +106,4 @@ function App() {
     getDrinks();
   }, []);
 
-  if (isLoading) {
-    return <p>Loading &hellip;</p>;
-  }
-
-  const addToMenu = (item) => {
-    // Only needed type to check if item is snack or drink
-    let type = item.type;
-    item.type = undefined;
-
-    if(type === 'drink'){
-      setDrinks(drinks => [...drinks, {...item}])
-    } else {
-      setSnacks(snacks => [...snacks, {...item}])
-    }
-  }
-
-  return (
-    <div className="App">
-      <BrowserRouter>
-        <NavBar />
-        <main>
-          <Switch>
-            <Route exact path="/">
-              <Home snacks={snacks} drinks={drinks} />
-            </Route>
-            <Route exact path="/snacks">
-              <Menu snacks={snacks} items={snacks} title="Snacks" />
-            </Route>
-            <Route path="/snacks/:id">
-              <Snack items={snacks} cantFind="/snacks" />
-            </Route>
-            <Route exact path="/drinks">
-              <Menu items={drinks} title="Drinks" />
-            </Route>
-            <Route path="/drinks/:id">
-              <Snack items={drinks} cantFind="/drinks" />
-            </Route>
-            <Route path="/add">
-              <NewItemForm addToMenu={addToMenu} />
-            </Route>
-            <Route>
-              <h1>ERROR 404</h1>
-              <p>Hmmm. I can't seem to find what you want...</p>
-            </Route>
-          </Switch>
-        </main>
-      </BrowserRouter>
-    </div>
-  );
-}
-
-export default App;
+*/

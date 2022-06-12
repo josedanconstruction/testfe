@@ -1,20 +1,16 @@
 import React from "react";
-import { Card, CardBody, CardTitle, ListGroup, ListGroupItem } from "reactstrap";
+import { Card, CardBody, CardTitle } from "reactstrap";
 
-function Home({snacks, drinks}) {
+function Home() {
   return (
     <section className="col-md-8">
       <Card>
         <CardBody className="text-center">
           <CardTitle>
             <h3 className="font-weight-bold">
-              Welcome to Silicon Valley's premier dive cafe!
+              Welcome to Boulder's dating app for contractors!
             </h3>
           </CardTitle>
-          <ListGroup>
-            <ListGroupItem>Snacks on Menu: {snacks.length}</ListGroupItem>
-            <ListGroupItem>Drinks on Menu: {drinks.length}</ListGroupItem>
-          </ListGroup>
         </CardBody>
       </Card>
     </section>
