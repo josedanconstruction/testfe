@@ -19,7 +19,7 @@ function Item({ items, cantFind }) {
           <CardTitle className="font-weight-bold text-center">
             {item.name}
           </CardTitle>
-          <CardText className="font-italic">{item.permits[1]}</CardText>
+          <CardText className="font-italic">{item.address}</CardText>
           <p>
             <b>Permits:</b> {item.permitTypes}
           </p>
