@@ -2,7 +2,7 @@ import axios from "axios";
 
 const BASE_API_URL = "http://localhost:5000";
 
-const get_AWS = "http://54.158.87.77:8081"
+const get_AWS = "http://54.158.87.77:8081";
 
 /* 
   json-server will give you CRUD endpoints on snacks and drinks.
