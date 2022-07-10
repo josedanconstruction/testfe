@@ -14,8 +14,7 @@ const get_AWS = "http://54.158.87.77:8081";
 class SnackOrBoozeApi {
   static async getContractors() {
     const result = await axios.post(`${get_AWS}/api/security/login`, {
-      params: {},
-      {name : "admin", password : "password", role : "ADMIN"}
+      name : "admin", password : "password", role : "ADMIN"
     }
     });
     return result.data;
