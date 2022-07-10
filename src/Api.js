@@ -15,7 +15,7 @@ const httpsAgent = new https.Agent({ rejectUnauthorized: false});
 
 class SnackOrBoozeApi {
   static async getContractors() {
-    const result = await axios.post(`${get_AWS}/api/security/login`, {
+    const result = await axios.post(`${get_AWS}/api/security/login`, { httpsAgent }, {
       name : "admin", password : "password", role : "ADMIN"
     });
     return result.data;
