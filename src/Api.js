@@ -15,7 +15,6 @@ class SnackOrBoozeApi {
   static async getContractors() {
     const result = await axios.post(`${get_AWS}/api/security/login`, {
       name : "admin", password : "password", role : "ADMIN"
-    }
     });
     return result.data;
   }
