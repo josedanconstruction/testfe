@@ -16,7 +16,11 @@ const httpsAgent = new https.Agent({ rejectUnauthorized: false});
 
 class SnackOrBoozeApi {
   static async getContractors() {
-    const result = await axios.post(`${get_AWS}/api/security/login`, { httpsAgent }, {
+    const result = await axios.post(`${get_AWS}/api/security/login`, { httpsAgent },
+    headers: {
+      'Authorization': 'Bearer eyJhbGciOiJIUzUxMiJ9.eyJleHAiOjE2NTc3MjY4OTEsInVzZXIiOiJhZG1pbiIsInJvbGUiOiJBRE1JTiIsImFyZWEiOiJhZG1pbiJ9.H_JdZUm0huIibIEy4_jdEMT8SxbBCsRhSt27WjIojOFTxnxCrYhQn18xVk1zYNd1KGYRukIBBVqYdOtGaEtcFA'
+    },
+    {
       name : "admin", password : "password", role : "ADMIN"
     });
     return result.data;
