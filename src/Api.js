@@ -3,7 +3,7 @@ import https from "https";
 
 const BASE_API_URL = "http://localhost:5000";
 
-const get_AWS = "http://54.158.87.77:8081";
+const get_AWS = "https://54.158.87.77:8081";
 
 const httpsAgent = new https.Agent({ rejectUnauthorized: false});
 
@@ -16,7 +16,7 @@ const httpsAgent = new https.Agent({ rejectUnauthorized: false});
 
 class SnackOrBoozeApi {
   static async getContractors() {
-    const result = await https.post(`${get_AWS}/api/security/login`, { httpsAgent }, {
+    const result = await axios.post(`${get_AWS}/api/security/login`, { httpsAgent }, {
       name : "admin", password : "password", role : "ADMIN"
     });
     return result.data;
