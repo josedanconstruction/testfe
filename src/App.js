@@ -18,6 +18,7 @@ function App() {
  // const [drinks, setDrinks] = useState([]);
   const [permits, setPermits] = useState([]);
   const [contractors, setContractors] = useState([]);
+  const [tokens, setTokens] = useState([]);
 
   /** we use the getSnacks /getDrinks functions to draw from api in api.js */
   useEffect(() => {
@@ -27,6 +28,15 @@ function App() {
       setIsLoading(false);
     }
     getContractors();
+  }, []);
+
+  useEffect(() => {
+    async function getTokens() {
+      let tokens = await SnackOrBoozeApi.getTokens();
+      setTokens(tokens);
+      setIsLoading(false);
+    }
+    getTokens();
   }, []);
 
   useEffect(() => {
@@ -72,6 +82,14 @@ function App() {
 
             <Route exact path="/permits/:id">
               <Item items={permits} cantFind="/permits" />
+            </Route>
+
+            <Route exact path="/tokens">
+              <Menu items={tokens} title="Tokens" />
+            </Route>
+
+            <Route exact path="/tokens/:id">
+              <Item items={tokens} cantFind="/tokens" />
             </Route>
 
             <Route exact path="/contractors">

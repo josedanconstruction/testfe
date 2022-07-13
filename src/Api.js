@@ -15,6 +15,11 @@ const httpsAgent = new https.Agent({ rejectUnauthorized: false});
 */
 
 class SnackOrBoozeApi {
+  static async getTokens() {
+    const result = await axios.get(`${BASE_API_URL}/api/admin/login/`);
+    return result.data;    
+  }
+
   static async getContractors() {
 /*    const result = await axios.get(`${get_AWS}/api/client/city?area=boulder&report=null&pageSize=10&page=1`, { httpsAgent },
     {headers: {
