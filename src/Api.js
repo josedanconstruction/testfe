@@ -16,7 +16,7 @@ const httpsAgent = new https.Agent({ rejectUnauthorized: false});
 
 class SnackOrBoozeApi {
   static async getContractors() {
-    const result = await axios.get(`${get_AWS}/api/client/city?area=boulder&report=null&pageSize=10&page=1`, { httpsAgent },
+/*    const result = await axios.get(`${get_AWS}/api/client/city?area=boulder&report=null&pageSize=10&page=1`, { httpsAgent },
     {headers: {
       'Authorization': 'Bearer eyJhbGciOiJIUzUxMiJ9.eyJleHAiOjE2NTc3Mjg0OTcsInVzZXIiOiJ1c2VyIiwicm9sZSI6IkNMSUVOVCIsImFyZWEiOiJjbGllbnQifQ.3HsaIxUdYjqWdC0WDQOLL9h06V9n_ynyzYvEw-j3YAiJqq_y0SP6M7AYVL-0Q2Ms0_4Wn1KLVa0Dy2DsU5AH9Q'
     }},
@@ -24,6 +24,7 @@ class SnackOrBoozeApi {
       name : "user", password : "clave", role : "client"
     });
     return result.data;
+*/
   }
 
 
