@@ -8,13 +8,13 @@ function NavBar() {
     <div>
       <Navbar expand="md">
         <NavLink exact to="/" className="navbar-brand">
-          Snack or Booze
+          Permits and Contractors
         </NavLink>
 
         <Nav className="ml-auto" navbar>
           <NavItem>
-            <NavLink to="/snacks">Snacks</NavLink>
-            <NavLink to="/drinks">Drinks</NavLink>
+            <NavLink to="/contractors">Contractors</NavLink>
+            <NavLink to="/permits">Permits</NavLink>
             <NavLink to="/add">Add Items</NavLink>
           </NavItem>
         </Nav>
