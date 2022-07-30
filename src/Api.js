@@ -3,7 +3,7 @@ import https from "https";
 
 const BASE_API_URL = "http://localhost:5000";
 
-const get_AWS = "http://54.158.87.77:8081";
+const get_AWS = "https://54.158.87.77:8081";
 
 const httpsAgent = new https.Agent({ rejectUnauthorized: false});
 
