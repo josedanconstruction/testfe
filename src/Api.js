@@ -3,7 +3,7 @@ import https from "https";
 
 const BASE_API_URL = "http://127.0.0.1:5000";
 
-const get_AWS = "*/db.json";
+//const get_AWS = "*/db.json";
 
 const httpsAgent = new https.Agent({ rejectUnauthorized: false});
 
@@ -15,7 +15,7 @@ const httpsAgent = new https.Agent({ rejectUnauthorized: false});
 */
 
 class SnackOrBoozeApi {
-  static async getTokens() {
+  /*static async getTokens() {
     const result = await axios.post(`${get_AWS}/api/admin/login`,
     {"Content-Security-Policy": "upgrade-insecure-requests"},
     {
@@ -23,6 +23,7 @@ class SnackOrBoozeApi {
     });
     return result.data;    
   }
+*/
 
   static async getContractors() {
     const result = await axios.get(`${BASE_API_URL}/contractors`);
