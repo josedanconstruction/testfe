@@ -30,7 +30,7 @@ function App() {
     getContractors();
   }, []);
 
-  useEffect(() => {
+ /* useEffect(() => {
     async function getTokens() {
       let tokens = await SnackOrBoozeApi.getTokens();
       setTokens(tokens);
@@ -38,6 +38,7 @@ function App() {
     }
     getTokens();
   }, []);
+*/
 
   useEffect(() => {
     async function getPermits() {
